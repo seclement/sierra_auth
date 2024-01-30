@@ -1,0 +1,17 @@
+services:
+  sierra_auth.service:
+    class: Drupal\sierra_auth\SierraAuthService
+    arguments:
+      $client_factory: '@http_client_factory'
+      $config_factory: '@config.factory'
+      $session: '@session'
+    config:
+      api_credentials: config('sierra_auth.settings')->get('api_credentials')
+      options:
+        proxy:
+          http: config('sierra_auth.settings')->get('proxy_http')
+          https: config('sierra_auth.settings')->get('proxy_https')
+  sierra_auth.settings_form:
+    class: Drupal\sierra_auth\Form\SierraAuthSettingsForm
+    arguments:
+      $config_factory: '@config.factory'

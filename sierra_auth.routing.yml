@@ -1,0 +1,15 @@
+sierra_auth.settings:
+  path: '/admin/config/services/sierra-auth'
+  defaults:
+    _form: '\Drupal\sierra_auth\Form\SierraAuthSettingsForm'
+    _title: 'Sierra Authenticate Settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+sierra_auth.authenticate_route:
+  path: '/sierra-auth'
+  defaults:
+    _controller: '\Drupal\sierra_auth\Controller\SierraAuthController::authenticateAction'
+    _title: 'Authenticate with Sierra API'
+  requirements:
+    _permission: 'access content'
